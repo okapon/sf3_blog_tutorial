@@ -1,24 +1,31 @@
-<h1>Blog posts</h1>
-{% if posts | length > 0 %}
-  <table class="table" border="1">
-    <thead>
-    <tr>
-      <td>ID</td>
-      <td>タイトル</td>
-      <td>作成日</td>
-    </tr>
-    </thead>
-    <tbody>
-      {# posts配列をループして、投稿記事の情報を表示 #}
-      {% for post in posts %}
+{% extends 'base.html.twig' %}
+
+{% block page_title %}Blog posts{% endblock %}
+
+{% block content %}
+  <div class="row">
+    {% if posts | length > 0 %}
+      <table class="table table-bordered">
+        <thead>
         <tr>
-          <td><a href="{{ path('blog_show', {id: post.id}) }}">{{ post.id }}</a></td>
-          <td>{{ post.title }}</td>
-          <td>{{ post.createdAt|date('Y/m/d H:i') }}</td>
+          <td>ID</td>
+          <td>タイトル</td>
+          <td>作成日</td>
         </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-{% else %}
-  <p>No Posts</p>
-{% endif %}
+        </thead>
+        <tbody>
+          {# posts配列をループして、投稿記事の情報を表示 #}
+          {% for post in posts %}
+            <tr>
+              <td><a href="{{ path('blog_show', {id: post.id}) }}">{{ post.id }}</a></td>
+              <td>{{ post.title }}</td>
+              <td>{{ post.createdAt|date('Y/m/d H:i') }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No Posts</p>
+    {% endif %}
+  </div>
+{% endblock %}

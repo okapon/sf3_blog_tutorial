@@ -1,4 +1,17 @@
-<h1>{{ post.title }}</h1>
-<p><small>Created: {{ post.createdAt|date('Y/m/d H:i') }}</small></p>
-<p>{{ post.content|nl2br }}</p>
-<p><a href="{{ path('blog_index') }}">一覧に戻る</a></p>
+{% extends 'base.html.twig' %}
+
+{% block page_title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <dl>
+      <dt>作成日</dt>
+      <dd><small>{{  post.createdAt|date('Y/m/d H:i') }}</small></dd>
+      <dt>内容</dt>
+      <dd>{{ post.content|nl2br }}</dd>
+    </dl>
+  </div>
+  <div class="row">
+    <a href="{{ path('blog_index') }}" class="btn btn-light">一覧に戻る</a>
+  </div>
+{% endblock %}
