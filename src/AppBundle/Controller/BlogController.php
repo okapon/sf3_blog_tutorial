@@ -24,4 +24,21 @@ class BlogController extends Controller
             'posts' => $posts,
         ]);
     }
+
+    /**
+     * @Route("/{id}")
+     */
+    public function showAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $post = $em->getRepository(Post::class)->find($id);
+
+        if (!$post) {
+            throw $this->createNotFoundException(
+                'No post found for id '.$id
+            );
+        }
+
+        return $this->render('blog/show.html.twig', ['post' => $post]);
+    }
 }
