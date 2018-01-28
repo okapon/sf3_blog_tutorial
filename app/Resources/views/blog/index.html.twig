@@ -1,1 +1,24 @@
 <h1>Blog posts</h1>
+{% if posts | length > 0 %}
+  <table class="table" border="1">
+    <thead>
+    <tr>
+      <td>ID</td>
+      <td>タイトル</td>
+      <td>作成日</td>
+    </tr>
+    </thead>
+    <tbody>
+      {# posts配列をループして、投稿記事の情報を表示 #}
+      {% for post in posts %}
+        <tr>
+          <td><a href="#">{{ post.id }}</a></td>
+          <td>{{ post.title }}</td>
+          <td>{{ post.createdAt|date('Y/m/d H:i') }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>No Posts</p>
+{% endif %}
