@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 class BlogController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="blog_index")
      */
     public function indexAction(Request $request)
     {
@@ -26,7 +26,7 @@ class BlogController extends Controller
     }
 
     /**
-     * @Route("/{id}")
+     * @Route("/{id}", name="blog_show")
      */
     public function showAction($id)
     {
