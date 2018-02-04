@@ -15,6 +15,7 @@
           <td>ID</td>
           <td>タイトル</td>
           <td>作成日</td>
+          <td>操作</td>
         </tr>
         </thead>
         <tbody>
@@ -24,6 +25,7 @@
               <td><a href="{{ path('blog_show', {id: post.id}) }}">{{ post.id }}</a></td>
               <td>{{ post.title }}</td>
               <td>{{ post.createdAt|date('Y/m/d H:i') }}</td>
+              <td><a class="btn btn-danger" href="{{ path('blog_delete', {'id': post.id}) }}">削除</a></td>
             </tr>
           {% endfor %}
         </tbody>
