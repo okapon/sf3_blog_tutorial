@@ -8,6 +8,6 @@
   {{ form_start(form) }}
     {{ form_widget(form) }}
     <a class="btn btn-light" href="{{ path('blog_index') }}">一覧に戻る</a>
-    <button type="submit" class="btn btn-primary">作成</button>
+    <button type="submit" class="btn btn-primary">{{ post.id ? '編集' : '作成' }}</button>
   {{ form_end(form) }}
 {% endblock content %}
